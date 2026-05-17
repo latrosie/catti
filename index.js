@@ -8,7 +8,7 @@ const no_of_mods = new java.io.File(`config/ChatTriggers/modules/${MODULE_NAME}/
 register('command', (arg0, arg1) => {
   switch(arg0) {
     case "update":
-      update(arg1.toLowerCase() === "true");
+      update(arg1 === "true");
       break;
     default:
       ChatLib.chat(ChatLib.getChatBreak());
