@@ -17,7 +17,7 @@ export function should_i_update() {
     ChatLib.chat(`^^) Update - You are already on the latest version. (${cloud_version})`);
     return false;
   } else {
-    ChatLib.chat(`^^) Update - New release ${local_version} found! Local: ${cloud_version}`);
+    ChatLib.chat(`^^) Update - New release ${cloud_version} found! Local: ${local_version}`);
     return true;
   }
 }
