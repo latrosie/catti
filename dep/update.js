@@ -7,7 +7,7 @@ const Byte = Java.type("java.lang.Byte");
 
 // CONFIG
 export const MODULE_NAME = "Catti";
-const GITHUB_REPO = "latrosie/catti-ct";
+const GITHUB_REPO = "latrosie/catti";
 
 export const metadata = JSON.parse(FileLib.read(MODULE_NAME, 'metadata.json'));
 export function update(force) {
