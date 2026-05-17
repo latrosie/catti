@@ -10,16 +10,22 @@ export const MODULE_NAME = "Catti";
 const GITHUB_REPO = "latrosie/catti";
 
 export const metadata = JSON.parse(FileLib.read(MODULE_NAME, 'metadata.json'));
+export function should_i_update() {
+  const local_version = metadata.version;
+  const cloud_version = JSON.parse(FileLib.getUrlContent(`https://raw.githubusercontent.com/${GITHUB_REPO}/main/metadata.json`)).version;
+  if (local_version === cloud_version) {
+    ChatLib.chat(`^^) Update - You are already on the latest version. (${cloud_version})`);
+    return false;
+  } else {
+    ChatLib.chat(`^^) Update - New release ${local_version} found! Local: ${cloud_version}`);
+    return true;
+  }
+}
+
 export function update(force) {
   new Thread(() => {
     try {
-      const local_version = metadata.version;
-      const cloud_version = JSON.parse(FileLib.getUrlContent(`https://raw.githubusercontent.com/${GITHUB_REPO}/main/metadata.json`)).version;
-      if(local_version === cloud_version && !force) {
-        ChatLib.chat(`^^) Update - You are already on the latest version. (${cloud_version})`);
-        return;
-      } else ChatLib.chat(`^^) Update - Updating from ${local_version} to ${cloud_version}`);
-
+      if(!should_i_update()) return;
       const url = new URL(`https://github.com/${GITHUB_REPO}/archive/refs/heads/main.zip`);
       const zip_input_stream = new ZipInputStream(url.openStream());
       let entry;
