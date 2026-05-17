@@ -10,12 +10,14 @@ function store_uuid(display_name, name) {
   }
 
   let player_uuids = JSON.parse(FileLib.read('Catti', 'dat/player_uuids.json')) || {};
-  player_uuids[player.getUUID().toString()] = name;
+  const uuid = player.getUUID().toString();
+  player_uuids[uuid] = name;
   FileLib.write('Catti', 'dat/player_uuids.json', JSON.stringify(player_uuids, null, 2));
+  ChatLib.chat(`^^) &aStoredUUID of &7${name}&a (&7${uuid}&a)`);
 }
 
 register('command', (display_name, name) => {
-  storeUUID(display_name, name);
+  store_uuid(display_name, name);
 }).setName('storeuuid');
 
 function denick(display_name) {

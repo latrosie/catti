@@ -19,6 +19,10 @@ register('chat', (name, cmd) => {
 
       ChatLib.command('stats ' + stats.whos);
       break;
+    case 'meow':
+      ChatLib.chat('meow');
+      ChatLib.command('pc meow');
+      break;
   }
 
   // p leader
@@ -28,7 +32,10 @@ register('chat', (name, cmd) => {
       ChatLib.command('p warp');
       break;
     case 'inv':
-      if(!cmd[1] /* || Party.isMember(cmd[1])  */) return;
+      if(!cmd[1]) {
+        ChatLib.command('pc Who should I invite idiot??');
+        return;
+      }
       ChatLib.command('p invite ' + cmd[1])
       break;
     case 'ptme':
@@ -45,8 +52,8 @@ let stats = {
   'wins': 0,
   'fkills': 0,
   'fDeaths': 0
-}
-stats.seal();
+};
+// stats.seal();
 
 register('chat', (fld, val, e) => {
   if(!stats.send) return;

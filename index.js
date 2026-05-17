@@ -12,7 +12,7 @@ register('command', (arg0, arg1) => {
       break;
     default:
       ChatLib.chat(ChatLib.getChatBreak());
-      ChatLib.chat(ChatLib.getChatMessage(`[${MODULE_NAME}]`));
+      ChatLib.chat(ChatLib.getCenteredText(`[${MODULE_NAME}]`));
       ChatLib.chat(ChatLib.getChatBreak());
       ChatLib.chat(`Creator: ${metadata.creator}`);
       ChatLib.chat(`Version: ${metadata.version}`);
