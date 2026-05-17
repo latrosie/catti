@@ -1,7 +1,7 @@
 {
   "name": "Catti",
   "description": "fakepixel realgaming final rewrite",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "creator": "Catrophie",
   "entry": "index.js"
 }

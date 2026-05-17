@@ -11,7 +11,7 @@ const CMD_ARGS = [
 register('command', (arg0, arg1) => {
   switch (arg0) {
     case "check_update":
-      new Thread(should_i_update()).start();
+      new Thread(() => { should_i_update() }).start();
       break;
     case "update":
       update(arg1 === "true");
